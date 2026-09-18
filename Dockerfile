@@ -14,6 +14,7 @@ COPY . .
 ARG NEXT_PUBLIC_APP_URL
 ENV NEXT_PUBLIC_APP_URL=$NEXT_PUBLIC_APP_URL
 ENV NEXT_TELEMETRY_DISABLED=1
+RUN mkdir -p public
 RUN npm run build
 
 # ---- run -----------------------------------------------------------------
