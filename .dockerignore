@@ -1,0 +1,13 @@
+node_modules
+.next
+.git
+.env
+.env.local
+*.local
+coverage
+tests
+docs
+scripts
+supabase
+*.md
+tsconfig.tsbuildinfo

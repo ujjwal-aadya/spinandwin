@@ -1,0 +1,45 @@
+{
+  "name": "toap-spin-win",
+  "version": "1.0.0",
+  "private": true,
+  "engines": { "node": ">=18.18" },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:unit": "vitest run tests/unit",
+    "test:integration": "vitest run tests/integration",
+    "create-admin": "tsx scripts/create-admin.ts",
+    "seed:admin": "tsx scripts/create-admin.ts",
+    "smoke-test": "tsx scripts/smoke-test.ts",
+    "concurrency-test": "tsx scripts/concurrency-test.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4",
+    "bcryptjs": "^2.4.3",
+    "jose": "^5.9.6",
+    "next": "16.3.5",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20.16.11",
+    "@types/pg": "^8.23.1",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "16.3.5",
+    "pg": "^8.23.0",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.3"
+  }
+}
