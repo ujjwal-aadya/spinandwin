@@ -64,13 +64,18 @@ export function sameOriginOk(req: Request): boolean {
   const origin = req.headers.get('origin');
   if (!origin) return true; // same-origin fetch from the app sends no Origin for GET
   try {
-    const allowed = new URL(env.appUrl).host;
-    return new URL(origin).host === allowed || new URL(origin).host === req.headers.get('host');
+    const from = new URL(origin).host;
+    // Behind a proxy (Cloud Run, a load balancer) the host the browser used
+    // arrives in x-forwarded-host; host is the internal one. Check both before
+    // falling back to the configured URL, which is baked in at build time and
+    // is therefore wrong on any deployment built without it.
+    if (from === req.headers.get('x-forwarded-host')) return true;
+    if (from === req.headers.get('host')) return true;
+    return from === new URL(env.appUrl).host;
   } catch {
     return false;
   }
 }
-
 export async function readJson<T = unknown>(req: Request): Promise<T> {
   const text = await req.text();
   if (text.length > 20_000) throw new Error('Payload too large');
